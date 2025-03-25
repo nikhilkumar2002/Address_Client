@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddressBookService } from '../../services/address-book.service';
 
@@ -14,19 +14,19 @@ export class AddPersonComponent {
     city: '',
     state: '',
     pincode: '',
-    phoneNumber: '',
+    phoneNumber: '' // Ensure this is a string
   };
   cities = ['Mumbai', 'Delhi', 'Bangalore', 'Kolkata'];
   states = ['Maharashtra', 'Delhi', 'Karnataka', 'West Bengal'];
 
   constructor(private service: AddressBookService) {}
 
-  addPerson() {
+  addPerson(form: NgForm) {
     const personData = { ...this.person, userId: 1 };
     this.service.addPerson(personData).subscribe(() => {
       alert('Person added successfully!');
       location.reload();
-      this.resetForm();
+      this.resetForm(form);
     });
   }
 
@@ -34,6 +34,7 @@ export class AddPersonComponent {
     if (form) {
       form.resetForm();
     }
+
     this.person = {
       name: '',
       address: '',

@@ -8,25 +8,16 @@
 >
   Add Person Form
 </h1>
+
 <div class="form-container">
-  <form #personForm="ngForm">
+  <!-- Single Form -->
+  <form #personForm="ngForm" (ngSubmit)="addPerson(personForm)">
+
     <label for="name">Name:</label>
-    <input
-      type="text"
-      id="name"
-      [(ngModel)]="person.name"
-      name="name"
-      required
-    />
+    <input type="text" id="name" [(ngModel)]="person.name" name="name" required />
 
     <label for="address">Address:</label>
-    <input
-      type="text"
-      id="address"
-      [(ngModel)]="person.address"
-      name="address"
-      required
-    />
+    <input type="text" id="address" [(ngModel)]="person.address" name="address" required />
 
     <label for="city">City:</label>
     <select id="city" [(ngModel)]="person.city" name="city" required>
@@ -39,26 +30,15 @@
     </select>
 
     <label for="pincode">Pincode:</label>
-    <input
-      type="text"
-      id="pincode"
-      [(ngModel)]="person.pincode"
-      name="pincode"
-      required
-    />
+    <input type="text" id="pincode" [(ngModel)]="person.pincode" name="pincode" required />
 
     <label for="phone">Phone Number:</label>
-    <input
-      type="text"
-      id="phone"
-      [(ngModel)]="person.phoneNumber"
-      name="phone"
-      required
-    />
+    <input type="text" id="phone" [(ngModel)]="person.phoneNumber" name="phone" required />
 
     <div class="button-group">
       <button type="button" (click)="resetForm(personForm)">Reset</button>
-      <button type="submit" (click)="addPerson()">Add Person</button>
+      <button type="submit">Add Person</button>
     </div>
+    
   </form>
 </div>
